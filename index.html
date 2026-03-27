@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV – Jesús Clemente Espinosa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0f11;
+      --surface: #16181c;
+      --surface2: #1e2128;
+      --accent: #00e5a0;
+      --accent2: #0077ff;
+      --text: #e8eaf0;
+      --muted: #7a7f90;
+      --border: #2a2d36;
+      --tag-bg: #1a2a20;
+      --tag-text: #00e5a0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 40px;
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(0,229,160,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .avatar-wrap {
+      width: 88px; height: 88px;
+      border-radius: 14px;
+      border: 2px solid var(--accent);
+      overflow: hidden;
+      background: var(--surface2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .header-info h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .header-info .tagline {
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      margin-bottom: 16px;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--surface2);
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-item .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── ABOUT ── */
+    .about-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #b8bcc8;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── EXPERIENCE CARD ── */
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .exp-card:hover {
+      border-color: rgba(0,229,160,0.35);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .exp-left {}
+
+    .exp-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .exp-company {
+      font-size: 0.72rem;
+      color: var(--accent2);
+      margin-top: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    .exp-date {
+      font-size: 0.68rem;
+      color: var(--muted);
+      white-space: nowrap;
+      background: var(--surface2);
+      padding: 4px 8px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .exp-bullets li {
+      font-size: 0.76rem;
+      color: #9aa0b4;
+      padding: 3px 0 3px 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .exp-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin-bottom: 12px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .edu-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .edu-center {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .edu-date {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-align: right;
+      background: var(--surface2);
+      padding: 4px 8px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── SKILLS TAGS ── */
+    .tags-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid rgba(0,229,160,0.25);
+      border-radius: 6px;
+      padding: 5px 11px;
+      font-size: 0.71rem;
+      letter-spacing: 0.03em;
+    }
+
+    .tag.blue {
+      background: #0d1e33;
+      color: #60aaff;
+      border-color: rgba(0,119,255,0.25);
+    }
+
+    .tag.neutral {
+      background: var(--surface2);
+      color: #9aa0b4;
+      border-color: var(--border);
+    }
+
+    /* ── LANGUAGES ── */
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .lang-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .lang-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .lang-level {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .lang-dot {
+      width: 10px; height: 10px;
+      border-radius: 3px;
+      background: var(--border);
+    }
+
+    .lang-dot.filled { background: var(--accent); }
+
+    .lang-label {
+      font-size: 0.66rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── CERTS ── */
+    .cert-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 10px;
+    }
+
+    .cert-icon {
+      width: 34px; height: 34px;
+      background: var(--tag-bg);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .cert-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .cert-meta {
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── TWO COLS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      header { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .exp-header { flex-direction: column; }
+      .edu-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="avatar-wrap">JC</div>
+    <div class="header-info">
+      <h1>Jesús Clemente Espinosa</h1>
+      <p class="tagline">Ciberseguridad · Back-End · Sistemas Informáticos</p>
+      <div class="contact-grid">
+        <div class="contact-item"><span class="dot"></span>26/09/2002</div>
+        <div class="contact-item"><span class="dot"></span>(+34) 604 951 478</div>
+        <div class="contact-item"><span class="dot"></span>Jesus.clemente.espinosa@gmail.com</div>
+        <div class="contact-item"><span class="dot"></span>Tarragona, España</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SOBRE MÍ -->
+  <div class="about-box">
+    Técnico en <strong style="color:#e8eaf0">Administración de Sistemas Informáticos en Red</strong> (perfil de Ciberseguridad) y en <strong style="color:#e8eaf0">Microsistemas y Redes</strong>, con 7 meses de experiencia en reparación de equipos informáticos, hardware, software y bases de datos. Busco un puesto estable con buen ambiente laboral que me permita seguir creciendo profesionalmente y adquirir experiencia en <strong style="color:#00e5a0">pentesting</strong>, <strong style="color:#00e5a0">programación Java</strong>, <strong style="color:#00e5a0">programación SQL</strong> y <strong style="color:#00e5a0">desarrollo Back-End</strong>.
+  </div>
+
+  <!-- EXPERIENCIA -->
+  <div class="section">
+    <div class="section-title">Experiencia Laboral</div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-role">Warehouse Picker</div>
+          <div class="exp-company">PortAventura · Tarragona</div>
+        </div>
+        <div class="exp-date">ago 2025</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Picking de ropa y objetos</li>
+        <li>Preparación de pedidos con pistola de radiofrecuencia</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-role">Database Manager</div>
+          <div class="exp-company">NeonLife · España</div>
+        </div>
+        <div class="exp-date">mar – ago 2025</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Copias de seguridad diarias</li>
+        <li>Análisis de protección y ataque</li>
+        <li>Detección de intrusos</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-role">Desarrollador Web</div>
+          <div class="exp-company">Mejoramos Tus Seguros · Reus</div>
+        </div>
+        <div class="exp-date">dic 2024 – feb 2025</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Creación de páginas web en WordPress</li>
+        <li>Automatización de scripts</li>
+        <li>Programación en Excel</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-role">Database</div>
+          <div class="exp-company">T-Systems · Reus</div>
+        </div>
+        <div class="exp-date">jul – ago 2023</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Creación y mantenimiento de bases de datos en SQL</li>
+        <li>Creación de informes en Power BI</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-role">Técnico Informático</div>
+          <div class="exp-company">Marlex Tarragona · Tarragona</div>
+        </div>
+        <div class="exp-date">abr 2022</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Cambiar y montar TPVs</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-role">Vigilante de Seguridad</div>
+          <div class="exp-company">Liconsur · Tarragona</div>
+        </div>
+        <div class="exp-date">oct – dic 2019</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Atención al cliente y resolución de incidencias</li>
+        <li>Control de barreras de acceso y salida</li>
+        <li>Realización de rondas de vigilancia para detectar anomalías</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-left">
+          <div class="exp-role">Técnico de TIC</div>
+          <div class="exp-company">Tecno Bravo · Tarragona</div>
+        </div>
+        <div class="exp-date">oct 2018 – feb 2019</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Reparación de equipos (Hardware y Software)</li>
+        <li>Administrador de bases de datos</li>
+        <li>Reparación a domicilio</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EDUCACIÓN -->
+  <div class="section">
+    <div class="section-title">Educación y Formación</div>
+
+    <div class="edu-card">
+      <div>
+        <div class="edu-title">CFGS Desarrollo de Aplicaciones Multiplataforma</div>
+        <div class="edu-center">Institut Vidal i Barraquer</div>
+      </div>
+      <div class="edu-date">sep 2025 – actual</div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="edu-title">CFGS Administració de Sistemes Informàtics en la Xarxa</div>
+        <div class="edu-center">Institut Baix Camp · Reus</div>
+      </div>
+      <div class="edu-date">jun 2022 – jun 2024</div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="edu-title">CFGM Sistemas Microinformático y Redes</div>
+        <div class="edu-center">Institut Vidal i Barraquer</div>
+      </div>
+      <div class="edu-date">Tarragona</div>
+    </div>
+  </div>
+
+  <!-- IDIOMAS + CERTIFICACIONES -->
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">Idiomas</div>
+      <div class="lang-grid" style="grid-template-columns: 1fr;">
+
+        <div class="lang-card">
+          <div class="lang-name">Español</div>
+          <div class="lang-level">
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+          </div>
+          <div class="lang-label">Lengua materna</div>
+        </div>
+
+        <div class="lang-card">
+          <div class="lang-name">Catalán</div>
+          <div class="lang-level">
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+          </div>
+          <div class="lang-label">Lengua materna</div>
+        </div>
+
+        <div class="lang-card">
+          <div class="lang-name">Inglés</div>
+          <div class="lang-level">
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot filled"></div>
+            <div class="lang-dot"></div>
+            <div class="lang-dot"></div>
+          </div>
+          <div class="lang-label">B1 – Usuario independiente</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Certificaciones</div>
+      <div class="cert-row">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">Inglés B1</div>
+          <div class="cert-meta">Cork English College · Irlanda · abr 2024</div>
+        </div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-icon">⚡</div>
+        <div>
+          <div class="cert-name">Full-Stack</div>
+          <div class="cert-meta">Fundación Esplai · dic 2025 · Presencial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPACIDADES TÉCNICAS -->
+  <div class="section">
+    <div class="section-title">Capacidades Técnicas</div>
+    <div class="tags-wrap">
+      <span class="tag">Java (básico)</span>
+      <span class="tag">SQL</span>
+      <span class="tag">C++ (básico)</span>
+      <span class="tag blue">HTML5 / CSS3</span>
+      <span class="tag blue">Bootstrap</span>
+      <span class="tag blue">Angular / React / Redux</span>
+      <span class="tag blue">TypeScript</span>
+      <span class="tag blue">JavaScript / ES6</span>
+      <span class="tag blue">Node.js / Express.js</span>
+      <span class="tag">Oracle DB</span>
+      <span class="tag">MS SQL Server</span>
+      <span class="tag">MySQL</span>
+      <span class="tag neutral">Cisco Packet Tracer</span>
+      <span class="tag neutral">Microsoft Office (Word, Excel)</span>
+      <span class="tag neutral">VirtualBox</span>
+      <span class="tag neutral">Power BI</span>
+      <span class="tag neutral">WordPress</span>
+    </div>
+  </div>
+
+  <!-- SOFT SKILLS -->
+  <div class="section">
+    <div class="section-title">Soft Skills</div>
+    <div class="tags-wrap">
+      <span class="tag neutral">Autoaprendizaje</span>
+      <span class="tag neutral">Resolución de conflictos</span>
+      <span class="tag neutral">Trabajo en equipo</span>
+      <span class="tag neutral">Empatía</span>
+      <span class="tag neutral">Adaptabilidad</span>
+      <span class="tag neutral">Tolerancia a la presión</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
